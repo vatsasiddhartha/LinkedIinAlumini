@@ -55,7 +55,7 @@ DTO → Request/Response objects
 ### 1️⃣ Clone repository
 
 ```
-git clone https://github.com/YOUR_USERNAME/Alumni_Searcher.git
+git clone https://github.com/vatsasiddhartha/Alumni_Searcher.git
 cd Alumni_Searcher
 ```
 
@@ -237,7 +237,7 @@ screenshorts/getRequest.png
 
 📁 Screenshot Folder Structure
 project-root/
- ├── screenshots/
+ ├── screenshorts/
  │   ├── post-api.png
  │   └── getRequest.png
 
