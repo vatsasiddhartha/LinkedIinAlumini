@@ -190,6 +190,57 @@ mvn test
 
 ---
 
+
+
+📸 Screenshots
+✅ POST API — Search & Save Alumni
+
+This endpoint fetches alumni data from PhantomBuster API, filters results based on user input, and stores matching records in the PostgreSQL database.
+
+Endpoint
+
+POST /search
+
+
+What this screenshot shows
+
+Request body with filters (university, designation, passoutYear)
+
+API response with filtered alumni data
+
+Successful data storage confirmation
+
+Example Screenshot
+
+screenshots/post-api.png
+
+✅ GET API — Fetch All Alumni
+
+This endpoint retrieves all stored alumni records from the database.
+
+Endpoint
+
+GET /all
+
+
+What this screenshot shows
+
+Request execution
+
+All saved alumni records
+
+JSON response from database
+
+Example Screenshot
+
+screenshots/get-api.png
+
+📁 Screenshot Folder Structure
+project-root/
+ ├── screenshots/
+ │   ├── post-api.png
+ │   └── get-api.png
+
 ## 📌 Assumptions
 
 * PhantomBuster API returns data in JSON format
