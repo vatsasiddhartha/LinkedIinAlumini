@@ -233,13 +233,13 @@ JSON response from database
 
 Example Screenshot
 
-screenshots/get-api.png
+screenshorts/getRequest.png
 
 📁 Screenshot Folder Structure
 project-root/
  ├── screenshots/
  │   ├── post-api.png
- │   └── get-api.png
+ │   └── getRequest.png
 
 ## 📌 Assumptions
 
