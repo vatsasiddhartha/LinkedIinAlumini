@@ -1,266 +1,232 @@
-# 🎓 Alumni Searcher — Spring Boot Assignment
+🎓 Alumni Searcher — Spring Boot Assignment
 
-A Spring Boot backend application that fetches alumni data from PhantomBuster API, filters it based on user criteria, stores it in PostgreSQL, and exposes REST APIs for search and retrieval.
+A Spring Boot backend application that fetches alumni data from the PhantomBuster API, filters it based on user criteria, stores it in PostgreSQL, and exposes REST APIs for search and retrieval.
 
-This project demonstrates:
+This project demonstrates API integration, JSON parsing, database persistence, filtering logic, and unit testing using JUnit and Mockito with a clean layered architecture.
 
-* API integration
-* JSON parsing
-* Database persistence
-* Filtering logic
-* Unit testing using JUnit & Mockito
-* Clean service architecture
+🚀 Tech Stack
 
----
+Java 17
 
-## 🚀 Tech Stack
+Spring Boot
 
-* Java 17
-* Spring Boot
-* PostgreSQL
-* JPA / Hibernate
-* PhantomBuster API
-* Jackson JSON Parser
-* JUnit 5
-* Mockito
-* Maven
+PostgreSQL
 
----
+Spring Data JPA / Hibernate
 
-## 📦 Features
+PhantomBuster API
+
+Jackson JSON Parser
+
+JUnit 5
+
+Mockito
+
+Maven
+
+📦 Features
 
 ✅ Fetch alumni data from PhantomBuster API
 ✅ Parse JSON response
-✅ Filter by university and designation
-✅ Store alumni data in PostgreSQL
-✅ Avoid duplicate processing logic
-✅ REST API endpoints
+✅ Filter alumni by university and designation
+✅ Store alumni data in PostgreSQL database
+✅ REST API endpoints for search and retrieval
 ✅ Unit testing with Mockito
-✅ Clean layered architecture
+✅ Clean service-based architecture
 
----
+🏗 Project Architecture
 
-## 🏗 Project Architecture
+The project follows a layered architecture:
 
 Controller → Handles API requests
-Service → Business logic & parsing
+Service → Business logic and data processing
 Repository → Database operations
-Entity → Database mapping
-DTO → Request/Response objects
+Entity → Database table mapping
+DTO → Request and Response objects
 
----
 
-## ⚙️ Setup & Run Application
+This separation keeps the code clean, maintainable, and scalable.
 
-### 1️⃣ Clone repository
-
-```
+⚙️ Setup & Run Application
+1️⃣ Clone Repository
 git clone https://github.com/vatsasiddhartha/Alumni_Searcher.git
 cd Alumni_Searcher
-```
 
----
+2️⃣ Configure PostgreSQL
 
-### 2️⃣ Configure PostgreSQL
+Create a database in PostgreSQL:
 
-Create database:
-
-```
 CREATE DATABASE alumni_db;
-```
 
----
+3️⃣ Update application.properties
 
-### 3️⃣ Update application.properties
+Update your database credentials:
 
-```
 spring.datasource.url=jdbc:postgresql://localhost:5432/alumni_db
 spring.datasource.username=postgres
 spring.datasource.password=your_password
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
-```
 
----
-
-### 4️⃣ Run application
-
-```
+4️⃣ Run Application
 mvn spring-boot:run
-```
 
-App runs on:
 
-```
+Application will run at:
+
 http://localhost:8080
-```
 
----
+🔌 API Endpoints
+✅ Search Alumni (Fetch + Filter + Save)
 
-## 🔌 API Endpoints
+Fetches data from PhantomBuster, filters results, and saves matching alumni to database.
 
-### ✅ Search Alumni (Fetch + Save)
-
-```
 POST /search
-```
 
-### Request Body
-
-```
+Request Body Example
 {
   "university": "IIT Delhi",
   "designation": "Software Engineer",
   "passoutYear": 2023
 }
-```
 
-### Response
+Response
 
-Returns filtered alumni and stores in database.
+Returns filtered alumni data and stores records in PostgreSQL.
 
----
+✅ Get All Alumni
 
-### ✅ Get All Alumni
+Fetch all stored alumni records from database.
 
-```
 GET /all
-```
 
-Returns all stored alumni.
 
----
+Returns all saved alumni.
 
-## 🗄 Database Verification
+🗄 Database Verification
 
-Check saved data:
+To verify saved records in PostgreSQL:
 
-```
 SELECT * FROM alumini;
-```
 
----
+🧪 Unit Testing
 
-## 🧪 Unit Testing
+This project includes unit tests for service layer logic.
 
-Test framework:
+Testing Tools
 
-* JUnit 5
-* Mockito
+JUnit 5
 
-### Run tests
+Mockito
 
-```
+Run Tests
 mvn test
-```
 
-### Test Coverage
+📊 Test Scenarios Covered
 
-* API response parsing
-* Filtering logic
-* Empty results handling
-* Multiple results handling
-* Case insensitive matching
-* Repository save verification
+Successful API fetch and save
 
----
+No matching results
 
-## 📊 Test Scenarios Covered
+Multiple alumni filtering
 
-* Successful API fetch and save
-* No matching results
-* Multiple alumni filtering
-* Empty Phantom response
-* Case-insensitive filtering
-* Partial university matching
-* Null filters handling
-* Database save verification
+Empty Phantom API response handling
 
----
+Case-insensitive filtering
 
-## 🔄 Application Flow
+Partial university matching
 
-1. User sends search request
-2. Service fetches data from Phantom API
-3. JSON response parsed
-4. Data filtered based on request
-5. Records stored in PostgreSQL
-6. Response returned
+Null filter handling
 
----
+Repository save verification
 
+🔄 Application Flow
 
+User sends search request
+
+Service fetches data from PhantomBuster API
+
+JSON response is parsed
+
+Data is filtered based on request criteria
+
+Matching records are stored in PostgreSQL
+
+Response is returned to user
 
 📸 Screenshots
+
+Below are the results of testing the main APIs of the application.
+
 ✅ POST API — Search & Save Alumni
 
-This endpoint fetches alumni data from PhantomBuster API, filters results based on user input, and stores matching records in the PostgreSQL database.
+This API fetches alumni data from the PhantomBuster API, filters it based on the user’s input, and saves matching records into the PostgreSQL database.
 
 Endpoint
-
 POST /search
 
+What this shows
 
-What this screenshot shows
+Request body with filters (university, designation, passout year)
 
-Request body with filters (university, designation, passoutYear)
+Filtered alumni response from API
 
-API response with filtered alumni data
+Data successfully stored in database
 
-Successful data storage confirmation
-
-Example Screenshot
-
-screenshots/post-api.png
+Screenshot
+![POST API Result](screenshorts/postrequest.png)
 
 ✅ GET API — Fetch All Alumni
 
-This endpoint retrieves all stored alumni records from the database.
+This API retrieves all alumni records stored in the database.
 
 Endpoint
-
 GET /all
 
+What this shows
 
-What this screenshot shows
-
-Request execution
+API request execution
 
 All saved alumni records
 
-JSON response from database
+JSON response returned from PostgreSQL database
 
-Example Screenshot
+Screenshot
+![GET API Result](screenshorts/getRequest.png)
 
-screenshorts/getRequest.png
-
-📁 Screenshot Folder Structure
+📁 Screenshot Location in Project
 project-root/
  ├── screenshorts/
- │   ├── post-api.png
+ │   ├── postrequest.png
  │   └── getRequest.png
 
-## 📌 Assumptions
+📌 Assumptions
 
-* PhantomBuster API returns data in JSON format
-* Filtering done using contains matching
-* Database auto-updated using JPA
+PhantomBuster API returns data in JSON format
 
----
+Filtering is implemented using partial string matching
 
-## 👨‍💻 Author
+Database schema is auto-managed using JPA
+
+👨‍💻 Author
 
 Siddhartha Vatsa
 Android & Backend Developer
 
----
+GitHub: https://github.com/vatsasiddhartha
 
-## ⭐ Future Improvements
+⭐ Future Improvements
 
-* Duplicate detection
-* Pagination
-* Better error handling
-* Logging system
-* Integration tests
-* Docker support
+Duplicate record detection
+
+Pagination support
+
+Better exception handling
+
+Logging system integration
+
+Integration tests
+
+Docker deployment support
+
